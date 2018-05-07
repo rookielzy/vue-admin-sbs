@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -20,9 +21,19 @@ service.interceptors.response.use(
     console.log(res)
 
     if (res.code !== 200) {
+      Message({
+        message: 'Not 200',
+        type: 'error',
+        duration: 5 * 1000
+      })
       return Promise.reject(new Error('Not 200'))
     }
 
+    Message({
+      message: 'Success',
+      type: 'success',
+      duration: 1000
+    })
     return response.data
   },
   error => {
