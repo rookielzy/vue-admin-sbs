@@ -29,11 +29,6 @@ service.interceptors.response.use(
       return Promise.reject(new Error('Not 200'))
     }
 
-    Message({
-      message: 'Success',
-      type: 'success',
-      duration: 1000
-    })
     return response.data
   },
   error => {

@@ -18,7 +18,8 @@ router.beforeEach((to, from, next) => {
     } else {
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetUserInfo').then(res => { // 拉取user_info
-          console.log('check the roles', res.data.roles)
+          console.log('check the roles', res.roles)
+          next()
           // TODO: 动态生成路由
           // const roles = res.data.roles // note: roles must be a array! such as: ['editor','develop']
           // store.dispatch('GenerateRoutes', { roles }).then(() => { // 根据roles权限生成可访问的路由表
@@ -27,7 +28,6 @@ router.beforeEach((to, from, next) => {
           // })
         }).catch(() => {
           // TODO: 获取用户信息失败，要求重新登录
-          // FIXME: 请求成功了，但总是捕捉到错误
           console.log('Get User Info Fail')
           // Message({
           //   message: 'Get User Info Fail',
