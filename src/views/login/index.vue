@@ -71,6 +71,7 @@ export default {
 
 <style lang="scss" scoped>
   .login-container {
+    margin-top: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
